@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 19th Birthday Dimas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #3e0e1b;
+      font-family: 'Poppins', sans-serif;
+      color: #f5f2e7;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    img.photo {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 1rem;
+      margin: 2rem auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    img.photo:hover {
+      transform: scale(1.03);
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 240px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .btn-copy {
+      background-color: #f5f2e7;
+      color: #3e0e1b;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+    .btn-copy:hover {
+      background-color: #dbc9b5;
+    }
+    #secretMessage {
+      display:none;
+      position:fixed;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      background-color:#f5f2e7;
+      color:#3e0e1b;
+      padding:2rem;
+      border-radius:1rem;
+      z-index:999;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Happy 19th Birthday</h1>
+    <h2>Dimas Putra Setia</h2>
+    <img src="https://photos.app.goo.gl/qgFXopKrtZUhdnRo7" class="photo" alt="Dimas" />
+    <p>Di usia sembilan belas ini, semoga langkah-langkahmu selalu diberkahi, hati kamu selalu tenang, dan semua mimpi indahmu pelan-pelan jadi nyata.</p>
+    <p>You are a gentle soul, Dimas. The way you care, dream, and love... semuanya begitu tulus. Hari ini bukan hanya tentang bertambah umur, tapi tentang how beautiful your presence is in this world.</p>
+    <p>Terima kasih sudah jadi kamu yang sekarang—yang lembut, yang kuat, dan yang selalu membuat semua di sekelilingmu merasa "dirayakan". 💫</p>
+
+    <h3>Galeri Kenangan</h3>
+    <div class="gallery">
+      <img src="https://picsum.photos/id/1011/600/400" alt="Galeri" />
+      <img src="https://picsum.photos/id/1015/600/400" alt="Galeri" />
+      <img src="https://picsum.photos/id/1016/600/400" alt="Galeri" />
+
+    </div>
+
+    <audio autoplay loop>
+      <source src="semua-aku-dirayakan.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <button class="btn-copy" onclick="copyLink()">Salin Link Website Ini</button>
+    <p id="copied" style="display:none; color:#dbc9b5; margin-top:1rem;">Link berhasil disalin!</p>
+  </div>
+
+  <div id="secretMessage">
+    <p><em>psst... tahu nggak?</em><br>Kamu itu hadiah paling indah yang pernah dilahirkan 19 tahun lalu 🤍</p>
+    <button onclick="document.getElementById('secretMessage').style.display='none'">Tutup</button>
+  </div>
+
+  <script>
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => {
+          document.getElementById('copied').style.display = 'block';
+          setTimeout(() => document.getElementById('copied').style.display = 'none', 3000);
+        });
+    }
+    setTimeout(() => {
+      document.getElementById('secretMessage').style.display = 'block';
+    }, 10000);
+
+    const flowers = ['❀','✿','❁','🌸','🌺'];
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.position = 'fixed';
+      flower.style.top = '-30px';
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.fontSize = '24px';
+      flower.style.zIndex = 999;
+      flower.style.animation = 'fall 8s linear infinite';
+      document.body.appendChild(flower);
+      setTimeout(() => document.body.removeChild(flower), 8000);
+    }
+    setInterval(createFlower, 500);
+  </script>
+</body>
+</html>
